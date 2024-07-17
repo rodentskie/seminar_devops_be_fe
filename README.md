@@ -21,3 +21,9 @@ To test add `--dry-run` on the end.
 To test add `--dry-run` on the end.
 
 `nx g @nx/next:app app --directory=apps/app`
+
+### Create Next Library
+
+To test add `--dry-run` on the end.
+
+`nx g @nx/next:lib --name=theme-toggler --directory=library/components/theme-toggler`
