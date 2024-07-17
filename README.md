@@ -8,7 +8,7 @@ Monorepo powered by [NX](https://nx.dev/)
 
 To test add `--dry-run` on the end.
 
-`nx g @nx/js:library --name=hello-tsc --buildable --directory=library`
+`nx g @nx/node:lib --name=delay --buildable --directory=library/delay`
 
 ### Create a TypeScript based application
 
