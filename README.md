@@ -14,4 +14,4 @@ To test add `--dry-run` on the end.
 
 To test add `--dry-run` on the end.
 
-`nx g @nx/node:app api --directory=app`
+`nx g @nx/node:app api --framework express --directory apps/api`
