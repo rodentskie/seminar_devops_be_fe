@@ -1,0 +1,20 @@
+{
+  "name": "pg",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "library/pg/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/library/pg",
+        "tsConfig": "library/pg/tsconfig.lib.json",
+        "packageJson": "library/pg/package.json",
+        "main": "library/pg/src/index.ts",
+        "assets": ["library/pg/*.md"]
+      }
+    }
+  }
+}

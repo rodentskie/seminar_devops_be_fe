@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@seminar/delay": ["library/delay/src/index.ts"],
+      "@seminar/pg": ["library/pg/src/index.ts"],
       "@seminar/theme-toggler": [
         "library/components/theme-toggler/src/index.ts"
       ],

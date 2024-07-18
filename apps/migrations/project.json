@@ -1,0 +1,55 @@
+{
+  "name": "migrations",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/migrations/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/migrations",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/migrations/src/main.ts",
+        "tsConfig": "apps/migrations/tsconfig.app.json",
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "migrations:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "migrations:build:development"
+        },
+        "production": {
+          "buildTarget": "migrations:build:production"
+        }
+      }
+    }
+  }
+}
