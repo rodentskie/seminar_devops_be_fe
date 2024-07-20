@@ -2,7 +2,7 @@ import exitHook from 'async-exit-hook';
 import { start, stop } from './server';
 
 (async () => {
-  const server = await start();
+  const { server, pool } = await start();
 
   exitHook.uncaughtExceptionHandler((e) => {
     console.log(e);
@@ -14,6 +14,7 @@ import { start, stop } from './server';
 
   exitHook(async (callback: () => void) => {
     await stop(server);
+    await pool.end();
     callback();
   });
 
