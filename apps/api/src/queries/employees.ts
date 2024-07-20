@@ -67,3 +67,37 @@ export const insertEmployee = async (
     return error instanceof Error ? error : new Error('Unknown error occurred');
   }
 };
+
+export const selectAllEmployees = async (
+  pool: Pool
+): Promise<IEmployees[] | Error> => {
+  try {
+    const query = `
+      SELECT * FROM employees;
+    `;
+
+    const result = await pool.query(query);
+    return result.rows;
+  } catch (error) {
+    console.error('Error inserting employee:', error);
+    return error instanceof Error ? error : new Error('Unknown error occurred');
+  }
+};
+
+export const selectSingleEmployee = async (
+  id: string,
+  pool: Pool
+): Promise<IEmployees[] | Error> => {
+  try {
+    const query = `
+      SELECT * FROM employees WHERE id = $1;
+    `;
+    const values = [id];
+
+    const result = await pool.query(query, values);
+    return result.rows[0];
+  } catch (error) {
+    console.error('Error inserting employee:', error);
+    return error instanceof Error ? error : new Error('Unknown error occurred');
+  }
+};

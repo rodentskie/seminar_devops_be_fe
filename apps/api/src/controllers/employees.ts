@@ -9,6 +9,8 @@ import {
   checkEmployeeEmail,
   checkEmployeeName,
   insertEmployee,
+  selectAllEmployees,
+  selectSingleEmployee,
 } from '../queries';
 
 export const createEmployees =
@@ -54,4 +56,27 @@ export const createEmployees =
     }
 
     return res.send({ message: 'Employee created successfully.' });
+  };
+
+export const getAllEmployees =
+  (pool: Pool) =>
+  async (req: Request, res: Response): Promise<Response> => {
+    const data = await selectAllEmployees(pool);
+    if (data instanceof Error) {
+      return res.status(400).json({ error: data.message });
+    }
+
+    return res.json({ data });
+  };
+
+export const getSingleEmployee =
+  (pool: Pool) =>
+  async (req: Request, res: Response): Promise<Response> => {
+    const id = req.params.id;
+    const data = await selectSingleEmployee(id, pool);
+    if (data instanceof Error) {
+      return res.status(400).json({ error: data.message });
+    }
+    console.log(data);
+    return res.json({ data });
   };
