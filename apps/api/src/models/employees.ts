@@ -19,5 +19,5 @@ export const employeeSchema = Joi.object({
       'string.pattern.base': 'Last name must contain only letters',
     }),
   email: Joi.string().email().required(),
-  age: Joi.number().integer().min(18).max(120),
+  age: Joi.number().integer().min(18).max(120).required(),
 });
