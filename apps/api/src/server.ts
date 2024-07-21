@@ -2,10 +2,12 @@ import express from 'express';
 import { Server } from 'http';
 import cors from 'cors';
 import { Pool } from 'pg';
-
+import { config } from 'dotenv';
 import { dbConnect } from '@seminar/pg';
 
 import { employeesRoutes } from './routes';
+
+config();
 
 export const start = async (): Promise<{ server: Server; pool: Pool }> => {
   const host = process.env.HOST ?? 'localhost';
