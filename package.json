@@ -7,8 +7,10 @@
   "dependencies": {
     "@mantine/core": "^7.11.2",
     "@mantine/hooks": "^7.11.2",
+    "@tabler/icons-react": "^3.11.0",
     "async-exit-hook": "^2.0.1",
     "axios": "^1.6.0",
+    "clsx": "^2.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "~4.18.1",
