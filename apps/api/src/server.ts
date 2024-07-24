@@ -6,6 +6,8 @@ import { config } from 'dotenv';
 
 import { dbConnect } from '@seminar/pg';
 
+import { employeesRoutes } from './routes';
+
 config();
 
 export const start = async (): Promise<{ server: Server; pool: Pool }> => {
@@ -26,7 +28,7 @@ export const start = async (): Promise<{ server: Server; pool: Pool }> => {
     res.send({ message: 'Hello seminar' });
   });
 
-  //   app.use('/api/employees', employeesRoutes(pool));
+    app.use('/api/employees', employeesRoutes(pool));
 
   const server = app.listen(port, host, () => {
     console.log(`[ ready ] http://${host}:${port}`);

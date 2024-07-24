@@ -19,7 +19,8 @@
       "@seminar/pg": ["library/pg/src/index.ts"],
       "@seminar/theme-toggler": [
         "library/components/theme-toggler/src/index.ts"
-      ]
+      ],
+      "@seminar/types": ["library/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
