@@ -1,6 +1,6 @@
 import { Container, Flex } from '@mantine/core';
-
 import { ThemeToggle } from '@seminar/theme-toggler';
+
 export default function Index() {
   return (
     <>
