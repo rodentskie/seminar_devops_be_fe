@@ -1,14 +1,24 @@
-import express from 'express';
+import exitHook from 'async-exit-hook';
+import { start, stop } from './server';
 
-const host = process.env.HOST ?? 'localhost';
-const port = process.env.PORT ? Number(process.env.PORT) : 3000;
+(async () => {
+  const { server, pool } = await start();
 
-const app = express();
+  exitHook.uncaughtExceptionHandler((e) => {
+    console.log(e);
+  });
 
-app.get('/', (req, res) => {
-  res.send({ message: 'Hello API' });
-});
+  exitHook.unhandledRejectionHandler((e) => {
+    console.log(e);
+  });
 
-app.listen(port, host, () => {
-  console.log(`[ ready ] http://${host}:${port}`);
-});
+  exitHook(async (callback: () => void) => {
+    await stop(server);
+    await pool.end();
+    callback();
+  });
+
+  exitHook.uncaughtExceptionHandler(async () => {
+    process.exit(-1);
+  });
+})();
